@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import './App.css';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [templates, setTemplates] = useState([]);
+  const [template, setTemplate] = useState(null);
+
+  useEffect(() => {
+    fetch('https://api.memegen.link/templates/').then((x) =>
+      x.json().then((response) => setTemplates(response)),
+    );
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {templates.map((template1) => {
+        return (
+          <img
+            key={template1.id}
+            src={template1.example}
+            alt={template1.name}
+            onClick={setTemplate(template1)}
+          />
+        );
+      })}
     </div>
   );
 }
-
 export default App;
