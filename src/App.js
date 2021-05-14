@@ -1,3 +1,4 @@
+import './App.css';
 import React, { useEffect, useState } from 'react';
 
 function App() {
@@ -23,37 +24,64 @@ function App() {
     e.preventDefault();
 
     const response = await fetch(
-      `https://api.memegen.link/images/${template.id}/${text1}/${text2}.jpg`,
+      `https://api.memegen.link/images/${template.id}/${text1}/${text2}.png`,
     );
-    setMeme(response.url);
+    setMeme(response);
   };
-
+  const download = () => {
+    const element = document.createElement('a');
+    const file = new Blob(meme.url, { type: 'image/*' });
+    console.log(file);
+    element.href = URL.createObjectURL(file);
+    element.download = 'image.png';
+    element.click();
+  };
   if (meme) {
     return (
       <div style={{ textAlign: 'center' }}>
-        <img style={{ width: 200 }} src={meme} alt="custom meme" />
+        {console.log(meme.url)}
+        <img style={{ width: 300 }} src={meme.url} alt="custom meme" />
+
+        <a href={meme.url} download onClick={() => download()}>
+          Download Meme
+        </a>
       </div>
     );
   } else {
     return (
-      <div>
+      <div
+        style={{
+          display: 'grid',
+          justifyContent: 'center',
+          alignContent: 'space-around',
+        }}
+      >
         <div>
-          {!template &&
-            templates.map((temp) => {
-              return (
-                <input
-                  type="image"
-                  style={{ width: 200 }}
-                  key={temp.id}
-                  src={temp.example}
-                  alt={temp.name}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setTemplate(temp);
-                  }}
-                />
-              );
-            })}{' '}
+          {!template && (
+            <>
+              <h1 style={{ textAlign: 'center', display: 'block' }}>
+                Choose a Template
+              </h1>
+              <div className="picstyle">
+                {templates.map((temp) => {
+                  return (
+                    <input
+                      className="pics"
+                      type="image"
+                      // style={{ width: 200,}}
+                      key={temp.id}
+                      src={temp.example}
+                      alt={temp.name}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setTemplate(temp);
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            </>
+          )}
           {template && (
             <div>
               <img

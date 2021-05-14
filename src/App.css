@@ -1,3 +1,11 @@
-img {
+.pics {
   width: 200px;
+}
+.picstyle {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  justify-content: 'space-around';
+  align-content: 'space-around';
+  margin-top: '5%';
+  margin-left: '5%';
 }
