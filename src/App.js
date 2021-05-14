@@ -1,8 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-condition */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import './App.css';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function App() {
   const [templates, setTemplates] = useState([]);
@@ -16,16 +12,32 @@ function App() {
 
   return (
     <div>
-      {templates.map((template1) => {
-        return (
+      <div>
+        {(!template &&
+          templates.map((temp) => {
+            return (
+              <input
+                type="image"
+                style={{ width: 200 }}
+                key={temp.id}
+                src={temp.example}
+                alt={temp.name}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setTemplate(temp);
+                  console.log(temp);
+                }}
+              />
+            );
+          })) || (
           <img
-            key={template1.id}
-            src={template1.example}
-            alt={template1.name}
-            onClick={setTemplate(template1)}
+            style={{ width: 200 }}
+            key={template.id}
+            src={template.example}
+            alt={template.name}
           />
-        );
-      })}
+        )}
+      </div>
     </div>
   );
 }
