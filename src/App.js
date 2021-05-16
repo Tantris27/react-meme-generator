@@ -30,8 +30,10 @@ function App() {
   };
   const download = () => {
     const element = document.createElement('a');
-    const file = new Blob(meme.url, { type: 'image/*' });
-    console.log(file);
+
+    console.log(document.createElement('a'));
+    const file = new Blob([meme.url], { type: 'image/*' });
+    console.log(URL.createObjectURL(file));
     element.href = URL.createObjectURL(file);
     element.download = 'image.png';
     element.click();
@@ -39,9 +41,8 @@ function App() {
   if (meme) {
     return (
       <div style={{ textAlign: 'center' }}>
-        {console.log(meme.url)}
         <img style={{ width: 300 }} src={meme.url} alt="custom meme" />
-
+        {console.log(meme)}
         <a href={meme.url} download onClick={() => download()}>
           Download Meme
         </a>
