@@ -29,17 +29,14 @@ function App() {
     setMeme(response);
   };
   function forceDownload(blob, filename) {
-    // Create an invisible anchor element
     const anchor = document.createElement('a');
     anchor.style.display = 'none';
     anchor.href = window.URL.createObjectURL(blob);
     anchor.setAttribute('download', filename);
     document.body.appendChild(anchor);
 
-    // Trigger the download by simulating click
     anchor.click();
 
-    // Clean up
     window.URL.revokeObjectURL(anchor.href);
     document.body.removeChild(anchor);
   }
@@ -56,13 +53,18 @@ function App() {
   }
   if (meme) {
     return (
-      <div style={{ textAlign: 'center' }}>
-        <img style={{ width: 300 }} src={meme.url} alt="custom meme" />
-        {console.log(meme)}
-        <a href={meme.url} download onClick={() => download(meme.url)}>
-          Download Meme
-        </a>
-      </div>
+      <>
+        <header>
+          <h1>Meme Templates</h1>
+        </header>
+        <div className="divstyle3">
+          <h2>Your Meme!</h2>
+          <img src={meme.url} alt="custom meme" />
+          <a href={meme.url} download onClick={() => download(meme.url)}>
+            Download Meme
+          </a>
+        </div>
+      </>
     );
   } else {
     return (
@@ -71,50 +73,57 @@ function App() {
         <header>
           <h1>Meme Templates</h1>
         </header>
-        <div className="divstyle">
-          <div>
-            {!template && (
-              <>
-                <h2 style={{ textAlign: 'center', display: 'block' }}>
-                  Choose a Template
-                </h2>
-                <div className="picstyle">
-                  {templates.map((temp) => {
-                    return (
-                      <input
-                        className="pics"
-                        type="image"
-                        // style={{ width: 200,}}
-                        key={temp.id}
-                        src={temp.example}
-                        alt={temp.name}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setTemplate(temp);
-                        }}
-                      />
-                    );
-                  })}
-                </div>
-              </>
-            )}
-            {template && (
-              <div>
-                <img
-                  style={{ width: 200 }}
-                  key={template.id}
-                  src={template.example}
-                  alt={template.name}
-                />
-                <input type="text" value={text1} onChange={handleChange1} />
-                <input type="text" value={text2} onChange={handleChange2} />
-                <button type="submit" onClick={handleSubmit}>
-                  Create Meme
-                </button>
-              </div>
-            )}
+        {!template && (
+          <div className="divstyle1">
+            <h2>Choose a Template</h2>
+            <div className="picstyle">
+              {templates.map((temp) => {
+                return (
+                  <input
+                    className="pics"
+                    type="image"
+                    key={temp.id}
+                    src={temp.example}
+                    alt={temp.name}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setTemplate(temp);
+                    }}
+                  />
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
+        {template && (
+          <div className="divstyle2">
+            <div className="createMeme">
+              <h2 style={{ margin: 0 }}>Customize Meme</h2>
+              <input
+                type="text"
+                value={text1}
+                onChange={handleChange1}
+                className="text"
+                placeholder="Top Text"
+              />
+              <img
+                key={template.id}
+                src={template.example}
+                alt={template.name}
+              />
+              <input
+                type="text"
+                value={text2}
+                onChange={handleChange2}
+                className="text"
+                placeholder="Bottom Text"
+              />
+              <button type="submit" onClick={handleSubmit}>
+                Create Meme
+              </button>
+            </div>
+          </div>
+        )}
       </>
     );
   }
