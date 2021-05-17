@@ -24,17 +24,19 @@ h2 {
   text-align: center;
 }
 .pics {
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 210px;
   justify-self: center;
+  display: block;
 }
 .divstyle1 {
   background-color: rgb(225 8 53 / 85%);
   border-radius: 10px;
   display: grid;
   min-width: min-content;
-  max-width: 80%;
   margin-left: 10%;
+  margin-right: 10%;
+  padding: 10px;
 }
 .divstyle2 {
   background-color: rgb(225 8 53 / 85%);
@@ -61,7 +63,6 @@ h2 {
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   justify-content: space-around;
-  padding: 10px;
 }
 .createMeme {
   margin: 50px;
