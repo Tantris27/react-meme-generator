@@ -1,11 +1,85 @@
+body {
+  box-sizing: border-box;
+  /* background-image: url('https://www.pcclean.io/wp-content/uploads/2020/4/rU32uy.jpg'); */
+  background-image: url('https://wallpapercave.com/wp/AopTcFx.png');
+  position: sticky;
+}
+header {
+  text-align: center;
+  margin: 20px 30% 0 30%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: whitesmoke;
+}
+h1 {
+  border-radius: 10px;
+  padding: 0 10px 0;
+}
+
+h2 {
+  margin: 20px 30% 0 30%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  text-align: center;
+}
 .pics {
   width: 200px;
+  height: 200px;
+  justify-self: center;
+}
+.divstyle1 {
+  background-color: rgb(255 193 7 / 70%);
+  border-radius: 10px;
+  display: grid;
+  width: 80%;
+  margin-left: 10%;
+}
+.divstyle2 {
+  background-color: rgb(255 193 7 / 70%);
+  border-radius: 10px;
+  display: grid;
+  width: auto;
+  max-width: 400px;
+  margin: 0 auto;
+  justify-content: center;
+}
+.divstyle3 {
+  background-color: rgb(255 193 7 / 70%);
+  border-radius: 10px;
+  display: grid;
+  width: auto;
+  max-width: 400px;
+  margin: 0 auto;
+  justify-content: center;
+  textalign: center;
 }
 .picstyle {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  justify-content: 'space-around';
-  align-content: 'space-around';
-  margin-top: '5%';
-  margin-left: '5%';
+  margin-top: 5%;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.createMeme {
+  margin: 50px;
+}
+.text {
+  margin: 20px 10px 10px 10px;
+  display: block;
+  width: stretch;
+}
+button {
+  width: stretch;
+  margin: 20px 10px 10px 10px;
+  display: block;
+}
+img {
+  width: 300px;
+  display: block;
+  justify-self: center;
+  margin-top: 30px;
+}
+a {
+  text-align: center;
+  margin: 30px;
 }
