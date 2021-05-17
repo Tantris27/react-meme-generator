@@ -29,14 +29,15 @@ h2 {
   justify-self: center;
 }
 .divstyle1 {
-  background-color: rgb(255 193 7 / 70%);
+  background-color: rgb(225 8 53 / 85%);
   border-radius: 10px;
   display: grid;
-  width: 80%;
+  min-width: min-content;
+  max-width: 80%;
   margin-left: 10%;
 }
 .divstyle2 {
-  background-color: rgb(255 193 7 / 70%);
+  background-color: rgb(225 8 53 / 85%);
   border-radius: 10px;
   display: grid;
   width: auto;
@@ -45,7 +46,7 @@ h2 {
   justify-content: center;
 }
 .divstyle3 {
-  background-color: rgb(255 193 7 / 70%);
+  background-color: rgb(225 8 53 / 85%);
   border-radius: 10px;
   display: grid;
   width: auto;
@@ -59,6 +60,7 @@ h2 {
   margin-top: 5%;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  justify-content: space-around;
   padding: 10px;
 }
 .createMeme {
@@ -83,4 +85,5 @@ img {
 a {
   text-align: center;
   margin: 30px;
+  color: aqua;
 }
