@@ -59,6 +59,16 @@ function App() {
           <h2>Your Meme!</h2>
           <img src={meme.url} alt="custom meme" />
           <button onClick={() => download(meme.url)}>Download Meme</button>
+          <button
+            className="deletebutton"
+            onClick={(e) => {
+              e.preventDefault();
+              setTemplate([]);
+              setMeme([]);
+            }}
+          >
+            Back to Memes
+          </button>
         </div>
       </>
     );
@@ -66,59 +76,83 @@ function App() {
     return (
       <>
         {' '}
-        <header>
-          <h1>Meme Templates</h1>
-        </header>
         {template.length === 0 && (
-          <div className="divstyle1">
-            <h2>Choose a Template</h2>
-            <div className="picstyle">
-              {templates.map((temp) => {
-                return (
-                  <input
-                    className="pics"
-                    type="image"
-                    key={temp.id}
-                    src={temp.example}
-                    alt={temp.name}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setTemplate(temp);
-                    }}
-                  />
-                );
-              })}
+          <>
+            <header>
+              <h1>Meme Templates</h1>
+              {/* <button
+            onClick={(e) => {
+              e.preventDefault();
+              setTemplate([]);
+            }}
+          >
+            Back to Memes
+          </button> */}
+            </header>
+            <div className="divstyle1">
+              <h2>Choose a Template</h2>
+              <div className="picstyle">
+                {templates.map((temp) => {
+                  return (
+                    <input
+                      className="pics"
+                      type="image"
+                      key={temp.id}
+                      src={temp.example}
+                      alt={temp.name}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setTemplate(temp);
+                      }}
+                    />
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          </>
         )}
         {template.id && (
-          <div className="divstyle2">
-            <div className="createMeme">
-              <h2 style={{ margin: 0 }}>Customize Meme</h2>
-              <input
-                type="text"
-                value={text1}
-                onChange={handleChange1}
-                className="text"
-                placeholder="Top Text"
-              />
-              <img
-                key={template.id}
-                src={template.example}
-                alt={template.name}
-              />
-              <input
-                type="text"
-                value={text2}
-                onChange={handleChange2}
-                className="text"
-                placeholder="Bottom Text"
-              />
-              <button type="submit" onClick={handleSubmit}>
-                Create Meme
-              </button>
+          <>
+            <header>
+              <h1>Meme Templates</h1>
+            </header>
+            <div className="divstyle2">
+              <div className="createMeme">
+                <h2 style={{ margin: 0 }}>Customize Meme</h2>
+                <input
+                  type="text"
+                  value={text1}
+                  onChange={handleChange1}
+                  className="text"
+                  placeholder="Top Text"
+                />
+                <img
+                  key={template.id}
+                  src={template.example}
+                  alt={template.name}
+                />
+                <input
+                  type="text"
+                  value={text2}
+                  onChange={handleChange2}
+                  className="text"
+                  placeholder="Bottom Text"
+                />
+                <button type="submit" onClick={handleSubmit}>
+                  Create Meme
+                </button>
+                <button
+                  className="deletebutton"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setTemplate([]);
+                  }}
+                >
+                  Back to Memes
+                </button>
+              </div>
             </div>
-          </div>
+          </>
         )}
       </>
     );

@@ -38,6 +38,9 @@ h2 {
   margin-right: 10%;
   padding: 10px;
 }
+.deletebutton {
+  color: red;
+}
 .divstyle2 {
   background-color: rgba(16, 27, 53, 0.5);
   border-radius: 10px;
