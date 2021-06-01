@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 import './App.css';
 import React, { useEffect, useState } from 'react';
 
