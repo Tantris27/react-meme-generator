@@ -34,9 +34,7 @@ function App() {
     anchor.href = window.URL.createObjectURL(blob);
     anchor.setAttribute('download', filename);
     document.body.appendChild(anchor);
-
     anchor.click();
-
     window.URL.revokeObjectURL(anchor.href);
     document.body.removeChild(anchor);
   }
@@ -60,9 +58,7 @@ function App() {
         <div className="divstyle3">
           <h2>Your Meme!</h2>
           <img src={meme.url} alt="custom meme" />
-          <a href={meme.url} download onClick={() => download(meme.url)}>
-            Download Meme
-          </a>
+          <button onClick={() => download(meme.url)}>Download Meme</button>
         </div>
       </>
     );
