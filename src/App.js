@@ -3,11 +3,10 @@ import React, { useEffect, useState } from 'react';
 
 function App() {
   const [templates, setTemplates] = useState([]);
-  const [template, setTemplate] = useState([]);
+  const [template, setTemplate] = useState();
   const [text1, setText1] = useState('');
   const [text2, setText2] = useState('');
-  const [meme, setMeme] = useState([]);
-
+  const [meme, setMeme] = useState();
   useEffect(() => {
     fetch('https://api.memegen.link/templates/').then((x) =>
       x.json().then((response) => setTemplates(response)),
@@ -49,7 +48,7 @@ function App() {
       .then((blob) => forceDownload(blob, filename))
       .catch((e) => console.error(e));
   }
-  if (meme.type) {
+  if (meme?.type) {
     return (
       <>
         <header>
@@ -76,8 +75,9 @@ function App() {
     return (
       <>
         {' '}
-        {template.length === 0 && (
+        {!template?.id && (
           <>
+            {console.log(template)}
             <header>
               <h1>Meme Templates</h1>
               {/* <button
@@ -111,7 +111,7 @@ function App() {
             </div>
           </>
         )}
-        {template.id && (
+        {template?.id && (
           <>
             <header>
               <h1>Meme Templates</h1>
